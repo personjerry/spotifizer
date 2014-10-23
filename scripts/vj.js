@@ -28,8 +28,8 @@ require([
 
     VJ.prototype.splat = function (volume) {
         var position = {
-            x: 0.2 + Math.random()*0.6,
-            y: 0.2 + Math.random()*0.6
+            x: 0.1 + Math.random()*0.8,
+            y: 0.1 + Math.random()*0.8
         };
 
         var velocity = {
