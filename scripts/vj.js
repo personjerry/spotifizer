@@ -124,28 +124,33 @@ require([
         analyzer.addEventListener('audio', function (evt) {
             
             scope.stats.begin();
-            var volume = 0;
+            var lvolume = 0;
+            var rvolume = 0;
             evt.audio.spectrum.left.forEach(function (v) {
-                volume += v;
+                lvolume += 2*v;
             });
 
             evt.audio.spectrum.right.forEach(function (v) {
-                volume += v;
+                rvolume += 2*v;
             });
 
-            volume /= evt.audio.spectrum.left.length*2;
-            volume /= -96;
-            volume = 1-volume;
+            lvolume /= evt.audio.spectrum.left.length*2;
+            lvolume /= -96;
+            lvolume = 1-lvolume;
+
+            rvolume /= evt.audio.spectrum.right.length*2;
+            rvolume /= -96;
+            rvolume = 1-rvolume;
 
 
             scope.simulationEnv.backgroundColorA({
-                r: scope.r * 0.2,
-                g: scope.g * 0.2,
-                b: scope.b * 0.2,
+                r: scope.r * 0.3,
+                g: scope.g * 0.3,
+                b: scope.b * 0.3,
             });
 
             if (lastVolume != -1) {
-                var flux = (volume - lastVolume)*volume;
+                var flux = (Math.max(rvolume, lvolume) - lastVolume)*Math.max(rvolume, lvolume);
                 scope.updateFluxBuffer(flux > 0 ? flux : 0);
             }
 
@@ -156,7 +161,7 @@ require([
                 scope.splat(flux*12.0-avg*4.0);                
             }
 
-            if (flux > avg*5.0 && scope.colorChangeTimer > 100) {
+            if (flux > avg*2.0 && scope.colorChangeTimer > 1) {
                 scope.r = Math.random();
                 scope.g = Math.random();
                 scope.b = Math.random();
@@ -168,7 +173,7 @@ require([
                 scope.colorChangeTimer++;
             }
 
-            lastVolume = volume;
+            lastVolume = Math.min(rvolume, lvolume);
             scope.stats.end();
         });
 

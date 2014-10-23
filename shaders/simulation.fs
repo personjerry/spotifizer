@@ -161,7 +161,9 @@ vec4 splat(vec2 p, float size, float amount, float scatter, vec2 c, float distDi
     vec2 samplePos = vec2(p.x + 0.1*size*n, p.y + 0.1*size*n);
     vec4 foreground = texture2D(reference, samplePos);
 
-    foreground.rgb *= 0.7 + 0.8*snoise(vec3(vTextureCoordinates, time*10.0));
+    foreground.rgb = vec3(normalizedNoise(vec3(vTextureCoordinates, time*11.0))+0.2,
+                     normalizedNoise(vec3(vTextureCoordinates, time*7.0))+0.2,
+                     normalizedNoise(vec3(vTextureCoordinates, time*23.0))+0.2);
     
     return blend(oldColor, 1.0, foreground, seed);
 

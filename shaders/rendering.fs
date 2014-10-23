@@ -149,10 +149,7 @@ void main(void) {
   
   vec4 backgroundColor = mix(backgroundColorA, backgroundColorB, smoothstep(-2.0, 2.0, cos((backgroundCoord.y*windowSize.y + backgroundCoord.x*windowSize.x))*sin((backgroundCoord.x*windowSize.x-backgroundCoord.y*windowSize.y))));
   
-  float diffuse = clamp(derX - derY, -1.0, 1.0);
-  
   gl_FragColor = normalBlend(enhancedColor, backgroundColor);
-  gl_FragColor.rgb -= 0.4*diffuse;
   
   gl_FragColor.rgb *= 1.0 - pow(0.8*length(coord0 -  vec2(0.5, 0.5)), 2.8);
   gl_FragColor.rgb *= 0.95 + 0.05*snoise(vec3(windowSize*coord0, 2.4));
