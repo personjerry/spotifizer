@@ -17,7 +17,7 @@ require([
         // document.body.appendChild( stats.domElement );
 
         this.fluxBuffer = [];
-        this.fluxBufferSize = 30;
+        this.fluxBufferSize = 5;
         this.t = 0;
 
         this.r = this.g = this.b = 0.3;
@@ -28,13 +28,13 @@ require([
 
     VJ.prototype.splat = function (volume) {
         var position = {
-            x: Math.random()*1.2 - 0.1,
-            y: Math.random()*1.2 - 0.1
+            x: 0.2 + Math.random()*0.6,
+            y: 0.2 + Math.random()*0.6
         };
 
         var velocity = {
             x: (Math.random() - 0.5) / 20.0,
-            y: (Math.random() - 0.5) / 8.0
+            y: (Math.random() - 0.5) / 12.0
         }
 
         var splat = new Splat.Splat({
@@ -156,15 +156,14 @@ require([
 
             var avg = scope.averageFlux();
 
-            if (flux > avg*2.0) {
-                scope.splat(flux*8.0-avg*4.0);
-                scope.splat(flux*12.0-avg*4.0);                
-            }
+            var volume = Math.max(rvolume,lvolume);
 
-            if (flux > avg*2.0 && scope.colorChangeTimer > 1) {
-                scope.r = Math.random();
-                scope.g = Math.random();
-                scope.b = Math.random();
+            if (flux > 2.0 * avg) {
+                var val = volume*8.0*(2*flux-avg);
+                scope.splat(val > 0.3 ? val : 0.3);  
+                scope.r = Math.random()+0.2;
+                scope.g = Math.random()+0.2;
+                scope.b = Math.random()+0.2;
                 scope.colorChangeTimer = 0;
             } else {
                 scope.r *= 0.999;
