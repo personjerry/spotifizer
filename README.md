@@ -11,6 +11,8 @@ A Spotify audio visualizer based on [emiax](https://github.com/emiax)'s [castafi
 
 It splatters pastel colored paint on an WebGL canvas as appropriate in the music.
 
+---
+
 Instructions:
 
 1. Clone this entire folder.
@@ -21,6 +23,8 @@ Instructions:
 6. Type this into your search bar without the quotes: "spotify:app:spotifizer"
 7. Enjoy!
 8. If you leave the app, you can press "back" until you return to it.
+
+---
 
 Note: If you restart Spotify, you'll need to type in "spotify:app:spotifizer". This is because Spotify ended their official app support a while ago, so you can only run them locally, but Spotify tries to load it from a nonexistent repository online upon restarting. This happens even if you "favorite" it, but if you find a solution, email me!
 
