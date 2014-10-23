@@ -1,14 +1,13 @@
 spotifizer
 ===============
 
-###V 0.1
-###by Jerry Liu
-
-![Spotifizer](https://raw.github.com/personjerry/spotifizer/master/images/screenshot.jpg)
+####V 0.1 by Jerry Liu
 
 A Spotify audio visualizer based on [emiax](https://github.com/emiax)'s [castafiore](https://github.com/emiax/castafiore).
 
 It splatters pastel colored paint on an WebGL canvas as appropriate in the music.
+
+![Spotifizer](https://raw.github.com/personjerry/spotifizer/master/images/screenshot.jpg)
 
 ---
 
