@@ -1,9 +1,8 @@
 spotifizer
 ===============
 
-V 0.1
-
-by Jerry Liu
+###V 0.1
+###by Jerry Liu
 
 ![Spotifizer](https://raw.github.com/personjerry/spotifizer/master/images/screenshot.jpg)
 
@@ -13,7 +12,7 @@ It splatters pastel colored paint on an WebGL canvas as appropriate in the music
 
 ---
 
-Instructions:
+##Instructions:
 
 1. Clone this entire folder.
 2. Create the folder ~/Spotify (Mac, Linux) or My Documents/Spotify (Windows)
